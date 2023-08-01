@@ -28,6 +28,12 @@ jobs:
         rm -rf drivers/kernelsu
         curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
 
+    - name: Patch KernelSU Ambient caps
+      run: |
+        cd KernelSU
+        patch -p1 < ../patches/ksu_fix_op_not_permitted.patch
+        cd ..
+
     - name: Set Date of Build
       id: dob
       run: |
