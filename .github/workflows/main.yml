@@ -1,4 +1,4 @@
-name: Manual NH KSU Build
+name: Manual EMUI9.1 NH KSU Build
 
 on: workflow_dispatch
  
@@ -37,7 +37,7 @@ jobs:
     - name: Set Date of Build
       id: dob
       run: |
-        echo "TIME=$(TZ=UTC-8 date +%d%m%y )" >> $GITHUB_OUTPUT
+        echo "TIME=$(TZ=UTC-8 date +%y%m%d )" >> $GITHUB_OUTPUT
 
     - name: Build Kernel
       run: |
