@@ -27,6 +27,11 @@ date="$(date +%d%m%Y-%H%M)"
 #sync with KernelSU
 curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
 
+#patching
+cd KernelSU
+patch -p1 < ../patches/ksu_fix_op_not_permitted.patch
+cd ..
+
 echo "***Building ...***"
 make ARCH=arm64 O=out nethunter_defconfig
 make ARCH=arm64 O=out -j$(nproc --all)  2>&1 | tee log-${date}.log
